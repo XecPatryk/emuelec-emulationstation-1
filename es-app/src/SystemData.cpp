@@ -1329,7 +1329,8 @@ bool SystemData::isVisible()
 
 	if ((getGameCountInfo()->totalGames > 0 ||
 		(UIModeController::getInstance()->isUIModeFull() && mIsCollectionSystem) ||
-		(mIsCollectionSystem && mMetadata.name == "favorites")))
+		(mIsCollectionSystem && mMetadata.name == "favorites")
+		))
 	{
 		if (!mIsCollectionSystem)
 		{
@@ -1337,6 +1338,10 @@ bool SystemData::isVisible()
 			return std::find(hiddenSystems.cbegin(), hiddenSystems.cend(), getName()) == hiddenSystems.cend();
 		}
 
+		return true;
+	}
+
+	if((mMetadata.name == "Category80s")){
 		return true;
 	}
 
