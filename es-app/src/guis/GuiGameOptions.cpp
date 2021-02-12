@@ -205,6 +205,13 @@ GuiGameOptions::GuiGameOptions(Window* window, FileData* game) : GuiComponent(wi
 			close();
 		});
 
+		snprintf(trstring, 1024, std::string(game->getFavorite() ? _("REMOVE FROM %s") : _("ADD TO %s")).c_str(), _("TEST").c_str());
+		mMenu.addEntry(trstring, false, [this, game]
+		{
+			CollectionSystemManager::get()->toggleGameInCollection(game, "Favorites");
+			close();
+		});
+
 		for (auto customCollection : CollectionSystemManager::get()->getCustomCollectionSystems())
 		{
 			if (customCollection.second.filteredIndex != nullptr)
