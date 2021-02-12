@@ -91,6 +91,8 @@ public:
 	virtual const bool getKidGame();
 	virtual const bool hasCheevos();
 
+	virtual const bool getCategory80s();
+
 	const std::string getConfigurationName();
 
 	inline bool isPlaceHolder() { return mType == PLACEHOLDER; };
