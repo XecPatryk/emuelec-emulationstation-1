@@ -162,7 +162,7 @@ void SystemView::populate()
 		if(mViewNeedsReload)
 			getViewElements(theme);
 
-		if((*it)->isVisible())
+		if(true)
 		{
 			Entry e;
 			e.name = (*it)->getName();
