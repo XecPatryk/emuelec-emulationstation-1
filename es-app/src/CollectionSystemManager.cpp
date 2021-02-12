@@ -31,6 +31,9 @@ CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
+		//custom categories
+		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
+		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
 		{ AUTO_LAST_PLAYED,     "recent",       _("last played"),       FileSorts::LASTPLAYED_ASCENDING,  "auto-lastplayed",         false,       true },
@@ -646,7 +649,7 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 
 	CollectionSystemData* collectionSystemData = nullptr;
 
-	if (editingCollection != "Favorites")
+	if (editingCollection != "Favorites" && editingCollection != "Category80s")
 	{
 		if (mCustomCollectionSystemsData.find(editingCollection) == mCustomCollectionSystemsData.cend())
 			return false;
@@ -714,13 +717,28 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 			
 		MetaDataList* md = &file->getSourceFileData()->getMetadata();
 			
-		std::string value = md->get(MetaDataId::Favorite);
-		if (value != "true")
-			md->set(MetaDataId::Favorite, "true");
-		else
-		{
-			adding = false;
-			md->set(MetaDataId::Favorite, "false");
+		std::string value;
+		if (editingCollection == "Favorites"){
+			value = md->get(MetaDataId::Favorite);
+			if (value != "true")
+				md->set(MetaDataId::Favorite, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Favorite, "false");
+			}
+		}
+
+		//Category80s
+		if (editingCollection == "Category80s"){
+			value = md->get(MetaDataId::Category80s);
+			if (value != "true")
+				md->set(MetaDataId::Category80s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category80s, "false");
+			}
 		}
 
 		sysData->addToIndex(file);

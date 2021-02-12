@@ -16,6 +16,7 @@ struct SystemEnvironmentData;
 
 enum CollectionSystemType
 {
+	AUTO_CATEGORY_80s,
 	AUTO_ALL_GAMES,
 	AUTO_LAST_PLAYED,	
 	AUTO_FAVORITES,

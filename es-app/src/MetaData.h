@@ -67,7 +67,8 @@ enum MetaDataId
 	Mix = 33,
 	CheevosHash = 34,
 	CheevosId = 35,
-	ScraperId = 36
+	ScraperId = 36,
+	Category80s = 37
 };
 
 namespace MetaDataImportType

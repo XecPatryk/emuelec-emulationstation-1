@@ -198,6 +198,15 @@ GuiGameOptions::GuiGameOptions(Window* window, FileData* game) : GuiComponent(wi
 	{
 		char trstring[1024];
 
+		// CATEGORIES
+		snprintf(trstring, 1024, std::string(game->getCategory80s() ? _("REMOVE FROM %s") : _("ADD TO %s")).c_str(), _("80s").c_str());
+		mMenu.addEntry(trstring, false, [this, game]
+		{
+			CollectionSystemManager::get()->toggleGameInCollection(game, "Category80s");
+			close();
+		});
+		//----------------------------
+
 		snprintf(trstring, 1024, std::string(game->getFavorite() ? _("REMOVE FROM %s") : _("ADD TO %s")).c_str(), _("FAVORITES").c_str());
 		mMenu.addEntry(trstring, false, [this, game]
 		{

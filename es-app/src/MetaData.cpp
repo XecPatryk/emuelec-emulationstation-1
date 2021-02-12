@@ -56,6 +56,8 @@ void MetaDataList::initMetadata()
 		{ Publisher,        "publisher",   MD_STRING,              "",                 false,      _("Publisher"),            _("enter game publisher"),	false },
 		{ Genre,            "genre",       MD_STRING,              "",                 false,      _("Genre"),                _("enter game genre"),		false },
 
+		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Category 80s"),             _("enter Category 80s"),			false },
+
 		{ ArcadeSystemName, "arcadesystemname",  MD_STRING,        "",                 false,      _("Arcade system"),        _("enter game arcade system"), false },
 
 		{ Players,          "players",     MD_INT,                 "",                false,      _("Players"),              _("enter number of players"),	false },
@@ -397,7 +399,7 @@ void MetaDataList::importScrappedMetadata(const MetaDataList& source)
 		if (mdd.id == MetaDataId::Region || mdd.id == MetaDataId::Language) // Not scrapped
 			continue;
 
-		if (mdd.id == MetaDataId::Favorite || mdd.id == MetaDataId::Hidden || mdd.id == MetaDataId::Emulator || mdd.id == MetaDataId::Core)
+		if ((mdd.id == MetaDataId::Category80s || mdd.id == MetaDataId::Favorite || mdd.id == MetaDataId::Hidden || mdd.id == MetaDataId::Emulator || mdd.id == MetaDataId::Core)
 			continue;
 
 		if (mdd.id == MetaDataId::Image && (source.get(mdd.id).empty() || (type & MetaDataImportType::Types::IMAGE) != MetaDataImportType::Types::IMAGE))
