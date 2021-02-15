@@ -157,12 +157,17 @@ void SystemView::populate()
 
 	for(auto it = SystemData::sSystemVector.cbegin(); it != SystemData::sSystemVector.cend(); it++)
 	{
+		char trstring2[1024];
+
+		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getName()); // batocera
+		mWindow->displayNotificationMessage(trstring2, 10000);
+
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 
 		if(mViewNeedsReload)
 			getViewElements(theme);
 
-		if(true)
+		if((*it)->isVisible())
 		{
 			Entry e;
 			e.name = (*it)->getName();

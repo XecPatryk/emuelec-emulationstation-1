@@ -1341,10 +1341,6 @@ bool SystemData::isVisible()
 		return true;
 	}
 
-	if((mMetadata.name == "Category80s")){
-		return true;
-	}
-
 	return false;
 }
 
