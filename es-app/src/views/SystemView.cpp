@@ -159,7 +159,7 @@ void SystemView::populate()
 	{
 		char trstring2[1024];
 
-		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getName()); // batocera
+		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getFullName()); // batocera
 		mWindow->displayNotificationMessage(trstring2, 10000);
 
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
@@ -516,7 +516,14 @@ bool SystemView::input(InputConfig* config, Input input)
 		{
 			// get random system
 			// go to system
-			setCursor(SystemData::getRandomSystem());
+			//setCursor(SystemData::getRandomSystem());
+			auto zz = SystemData::sSystemVector.cbegin();
+			setCursor((*zz));
+			populate();
+
+			auto zz2 = SystemData::sSystemVector.cbegin();
+			setCursor((*zz2));
+
 			return true;
 		}
 
