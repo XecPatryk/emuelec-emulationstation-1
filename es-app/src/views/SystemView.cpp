@@ -160,7 +160,7 @@ void SystemView::populate()
 		char trstring2[1024];
 
 		snprintf(trstring2, 1024, _("System '%s' :)").c_str(), (*it)->getFullName().c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, 10000);
+		//mWindow->displayNotificationMessage(trstring2, 10000);
 
 		const std::shared_ptr<ThemeData>& theme = (*it)->getTheme();
 

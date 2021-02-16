@@ -970,11 +970,13 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 	bool hiddenSystemsShowGames = Settings::getInstance()->getBool("HiddenSystemsShowGames");
 	auto hiddenSystems = Utils::String::split(Settings::getInstance()->getString("HiddenSystems"), ';');
 	
+	int time_window = 60000;
 	for(auto& system : SystemData::sSystemVector)
 	{
+		time_window -= 1000;
 		char trstring2[1024];
-		snprintf(trstring2, 1024, _("System collection %s").c_str(), system->getName().c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, 5000);
+		snprintf(trstring2, 1024, _("System collection '%s'").c_str(), system->getName().c_str()); // batocera
+		mWindow->displayNotificationMessage(trstring2, time_window);
 			// we won't iterate all collections
 		if (!system->isGameSystem() || system->isCollection())
 			continue;
