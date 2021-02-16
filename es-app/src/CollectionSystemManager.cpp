@@ -32,7 +32,7 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
 		//custom categories
-		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          true,       true },
+		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
 		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
@@ -970,13 +970,8 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 	bool hiddenSystemsShowGames = Settings::getInstance()->getBool("HiddenSystemsShowGames");
 	auto hiddenSystems = Utils::String::split(Settings::getInstance()->getString("HiddenSystems"), ';');
 	
-	int time_window = 60000;
 	for(auto& system : SystemData::sSystemVector)
 	{
-		time_window -= 1000;
-		char trstring2[1024];
-		snprintf(trstring2, 1024, _("System collection '%s'").c_str(), system->getName().c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, time_window);
 			// we won't iterate all collections
 		if (!system->isGameSystem() || system->isCollection())
 			continue;
