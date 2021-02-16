@@ -75,9 +75,9 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 	// create a map
 	std::vector<CollectionSystemDecl> tempSystemDecl = getSystemDecls();
 
-	int add = 15000;
+	int add = 120000;
 	for (auto it = tempSystemDecl.cbegin(); it != tempSystemDecl.cend(); ++it ){
-		add += 1000;
+		add -= 1000;
 		mCollectionSystemDeclsIndex[(*it).name] = (*it);
 
 		char trstring2[1024];
