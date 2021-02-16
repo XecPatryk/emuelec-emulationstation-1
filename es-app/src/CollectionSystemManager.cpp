@@ -306,7 +306,7 @@ void CollectionSystemManager::updateSystemsList()
 	if (!sortMode.empty() && !sortByManufacturer && !sortByHardware && !sortByReleaseDate)
 		std::sort(SystemData::sSystemVector.begin(), SystemData::sSystemVector.end(), systemByAlphaSort);
 
-	if (mCustomCollectionsBundle->getRootFolder()->getChildren().size() > -1)
+	if (mCustomCollectionsBundle->getRootFolder()->getChildren().size() > 0)
 		SystemData::sSystemVector.push_back(mCustomCollectionsBundle);
 
 	// add auto enabled ones
@@ -334,6 +334,25 @@ void CollectionSystemManager::updateSystemsList()
 			else
 				sysIt++;
 		}
+
+		//============== CHECK IF category_80s is in vector=========================================================================
+		bool found_system = false;
+		for (auto sysIt = SystemData::sSystemVector.cbegin(); sysIt != SystemData::sSystemVector.cend(); )
+		{
+			if ((*sysIt)->getName() == "category_80s")
+				{
+					found_system = true;
+				}
+		}
+		char trstring2[1024];
+		if(found_system == true){
+			snprintf(trstring2, 1024, _("TRUE = FOOUND SYSTEM category_80s").c_str()); // batocera
+		}else{
+			char trstring2[1024];
+			snprintf(trstring2, 1024, _("FALSE = DIDNT FIND SYSTEM category_80s").c_str()); // batocera
+		}
+		mWindow->displayNotificationMessage(trstring2, 10000);
+		//============== END OF CHECKING=============================================================================================
 	}
 
 	// if we were editing a custom collection, and it's no longer enabled, exit edit mode
