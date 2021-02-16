@@ -337,7 +337,7 @@ void CollectionSystemManager::updateSystemsList()
 
 		//============== CHECK IF category_80s is in vector=========================================================================
 		bool found_system = false;
-		for (auto sysIt = SystemData::sSystemVector.cbegin(); sysIt != SystemData::sSystemVector.cend(); )
+		for(auto sysIt = SystemData::sSystemVector.cbegin(); sysIt != SystemData::sSystemVector.cend(); sysIt++)
 		{
 			if ((*sysIt)->getName() == "category_80s")
 				{
