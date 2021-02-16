@@ -75,8 +75,14 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 	// create a map
 	std::vector<CollectionSystemDecl> tempSystemDecl = getSystemDecls();
 
-	for (auto it = tempSystemDecl.cbegin(); it != tempSystemDecl.cend(); ++it )
+	for (auto it = tempSystemDecl.cbegin(); it != tempSystemDecl.cend(); ++it ){
 		mCollectionSystemDeclsIndex[(*it).name] = (*it);
+
+		char trstring2[1024];
+
+		snprintf(trstring2, 1024, _("System ----------------------").c_str()); // batocera
+		mWindow->displayNotificationMessage(trstring2, 10000);
+	}
 
 	// creating standard environment data
 	mCollectionEnvData = new SystemEnvironmentData;
