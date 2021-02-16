@@ -972,7 +972,10 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 	
 	for(auto& system : SystemData::sSystemVector)
 	{
-		// we won't iterate all collections
+		char trstring2[1024];
+		snprintf(trstring2, 1024, _("System collection %s").c_str(), system->getName().c_str()); // batocera
+		mWindow->displayNotificationMessage(trstring2, 5000);
+			// we won't iterate all collections
 		if (!system->isGameSystem() || system->isCollection())
 			continue;
 		
