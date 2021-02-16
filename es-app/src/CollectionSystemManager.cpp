@@ -32,7 +32,7 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
 		//custom categories
-		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
+		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          true,       true },
 		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
@@ -1065,16 +1065,6 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 							    
 			if (include) 
 			{
-				CollectionFileData* newGame = new CollectionFileData(game, newSys);
-				rootFolder->addChild(newGame);
-				newSys->addToIndex(newGame);
-			}	
-			if (sysDecl.type == AUTO_CATEGORY_80s) 
-			{
-				char trstring2[1024];
-
-			snprintf(trstring2, 1024, _("System Auto dodany!@!!@!@!@!@").c_str()); // batocera
-			mWindow->displayNotificationMessage(trstring2, 10000);
 				CollectionFileData* newGame = new CollectionFileData(game, newSys);
 				rootFolder->addChild(newGame);
 				newSys->addToIndex(newGame);
