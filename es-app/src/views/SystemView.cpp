@@ -26,6 +26,8 @@
 const int logoBuffersLeft[] = { -5, -2, -1 };
 const int logoBuffersRight[] = { 1, 2, 5 };
 
+bool category_view = false;
+
 SystemView::SystemView(Window* window) : IList<SystemViewData, SystemData*>(window, LIST_SCROLL_STYLE_SLOW, LIST_ALWAYS_LOOP),
 										 mViewNeedsReload(true),
 										 mSystemInfo(window, _("SYSTEM INFO"), Font::get(FONT_SIZE_SMALL), 0x33333300, ALIGN_CENTER)
@@ -167,7 +169,22 @@ void SystemView::populate()
 		if(mViewNeedsReload)
 			getViewElements(theme);
 
-		if((*it)->isVisible())
+		bool allow_show = false;
+		if(category_view == true){
+			//allow only TOP100
+			//nazwa (*it)->getFullName()
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = true;
+			}
+		}else{
+			//alowall
+			allow_show = true;
+			if ((*it)->getFullName().find("category") != std::string::npos) {
+				allow_show = false;
+			}
+			
+		}
+		if((*it)->isVisible() && allow_show)
 		{
 			Entry e;
 			e.name = (*it)->getName();
@@ -517,6 +534,13 @@ bool SystemView::input(InputConfig* config, Input input)
 			// get random system
 			// go to system
 			//setCursor(SystemData::getRandomSystem());
+			if(category_view == true){
+				category_view = false;
+			}else{
+				category_view = true;
+			}
+
+			//
 			auto zz = SystemData::sSystemVector.cbegin();
 			setCursor((*zz));
 			populate();
