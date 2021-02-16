@@ -1068,6 +1068,16 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 				CollectionFileData* newGame = new CollectionFileData(game, newSys);
 				rootFolder->addChild(newGame);
 				newSys->addToIndex(newGame);
+			}	
+			if (sysDecl.type == AUTO_CATEGORY_80s) 
+			{
+				char trstring2[1024];
+
+			snprintf(trstring2, 1024, _("System Auto dodany!@!!@!@!@!@").c_str()); // batocera
+			mWindow->displayNotificationMessage(trstring2, 10000);
+				CollectionFileData* newGame = new CollectionFileData(game, newSys);
+				rootFolder->addChild(newGame);
+				newSys->addToIndex(newGame);
 			}			
 		}
 	}
