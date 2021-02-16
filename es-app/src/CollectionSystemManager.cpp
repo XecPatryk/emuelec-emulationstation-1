@@ -75,16 +75,8 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 	// create a map
 	std::vector<CollectionSystemDecl> tempSystemDecl = getSystemDecls();
 
-	int add = 120000;
-	for (auto it = tempSystemDecl.cbegin(); it != tempSystemDecl.cend(); ++it ){
-		add -= 1000;
+	for (auto it = tempSystemDecl.cbegin(); it != tempSystemDecl.cend(); ++it )
 		mCollectionSystemDeclsIndex[(*it).name] = (*it);
-
-		char trstring2[1024];
-
-		snprintf(trstring2, 1024, _("name '%s' ").c_str(), (*it).name.c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, add);
-	}
 
 	// creating standard environment data
 	mCollectionEnvData = new SystemEnvironmentData;
@@ -314,7 +306,7 @@ void CollectionSystemManager::updateSystemsList()
 	if (!sortMode.empty() && !sortByManufacturer && !sortByHardware && !sortByReleaseDate)
 		std::sort(SystemData::sSystemVector.begin(), SystemData::sSystemVector.end(), systemByAlphaSort);
 
-	if (mCustomCollectionsBundle->getRootFolder()->getChildren().size() > 0)
+	if (mCustomCollectionsBundle->getRootFolder()->getChildren().size() > -1)
 		SystemData::sSystemVector.push_back(mCustomCollectionsBundle);
 
 	// add auto enabled ones
