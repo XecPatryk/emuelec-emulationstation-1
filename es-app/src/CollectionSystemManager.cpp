@@ -334,25 +334,6 @@ void CollectionSystemManager::updateSystemsList()
 			else
 				sysIt++;
 		}
-
-		//============== CHECK IF category_80s is in vector=========================================================================
-		bool found_system = false;
-		for(auto sysIt = SystemData::sSystemVector.cbegin(); sysIt != SystemData::sSystemVector.cend(); sysIt++)
-		{
-			if ((*sysIt)->getName() == "category_80s")
-				{
-					found_system = true;
-				}
-		}
-		char trstring2[1024];
-		if(found_system == true){
-			snprintf(trstring2, 1024, _("TRUE = FOOUND SYSTEM category_80s").c_str()); // batocera
-		}else{
-			char trstring2[1024];
-			snprintf(trstring2, 1024, _("FALSE = DIDNT FIND SYSTEM category_80s").c_str()); // batocera
-		}
-		mWindow->displayNotificationMessage(trstring2, 10000);
-		//============== END OF CHECKING=============================================================================================
 	}
 
 	// if we were editing a custom collection, and it's no longer enabled, exit edit mode
@@ -1044,6 +1025,10 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 				case AUTO_FAVORITES:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					include = game->getFavorite();
+					break;
+				case AUTO_CATEGORY_80s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					include = game->getCategory80s();
 					break;
 				case AUTO_ARCADE:
 					include = isArcade;
