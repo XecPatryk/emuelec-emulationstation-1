@@ -84,7 +84,7 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 	{
 		//categoryByName
 		char trstring2[1024];
-		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), categoryByName[i][0].c_str()); // batocera
+		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), categoryByName[i][0]); // batocera
 		mWindow->displayNotificationMessage(trstring2, 10000);
 	}
 
