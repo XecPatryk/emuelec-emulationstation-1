@@ -68,7 +68,9 @@ enum MetaDataId
 	CheevosHash = 34,
 	CheevosId = 35,
 	ScraperId = 36,
-	Category80s = 37
+	Category80s = 37,
+	Category70s = 38,
+	Category90s = 39
 };
 
 namespace MetaDataImportType

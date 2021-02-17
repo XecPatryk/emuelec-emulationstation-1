@@ -32,7 +32,9 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
 		//custom categories
+		{ AUTO_CATEGORY_70s,       "category_70s",    _("category_70s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_70s",          false,       true },
 		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
+		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
 		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
@@ -649,7 +651,7 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 
 	CollectionSystemData* collectionSystemData = nullptr;
 
-	if (editingCollection != "Favorites" && editingCollection != "Category80s")
+	if (editingCollection != "Favorites" && editingCollection != "Category70s" && editingCollection != "Category80s" && editingCollection != "Category90s")
 	{
 		if (mCustomCollectionSystemsData.find(editingCollection) == mCustomCollectionSystemsData.cend())
 			return false;
@@ -729,6 +731,18 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 			}
 		}
 
+		//Category70s
+		if (editingCollection == "Category70s"){
+			value = md->get(MetaDataId::Category70s);
+			if (value != "true")
+				md->set(MetaDataId::Category70s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category70s, "false");
+			}
+		}
+
 		//Category80s
 		if (editingCollection == "Category80s"){
 			value = md->get(MetaDataId::Category80s);
@@ -738,6 +752,18 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 			{
 				adding = false;
 				md->set(MetaDataId::Category80s, "false");
+			}
+		}
+
+		//Category90s
+		if (editingCollection == "Category90s"){
+			value = md->get(MetaDataId::Category90s);
+			if (value != "true")
+				md->set(MetaDataId::Category90s, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::Category90s, "false");
 			}
 		}
 
@@ -1026,9 +1052,65 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					// we may still want to add files we don't want in auto collections in "favorites"
 					include = game->getFavorite();
 					break;
+				case AUTO_CATEGORY_70s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					//include = game->getCategory70s();
+					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
+					if (years.empty())
+						include = false;
+					else
+					{
+						char y1 = years[0];
+						char y2 = years[1];
+						char y3 = years[2];
+						char y4 = years[3];
+						if(y2 == '9' && y3 == '7'){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
+					//====================================
+					break;
 				case AUTO_CATEGORY_80s:
 					// we may still want to add files we don't want in auto collections in "favorites"
-					include = game->getCategory80s();
+					//include = game->getCategory80s();
+					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
+					if (years.empty())
+						include = false;
+					else
+					{
+						char y1 = years[0];
+						char y2 = years[1];
+						char y3 = years[2];
+						char y4 = years[3];
+						if(y2 == '9' && y3 == '8'){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_90s:
+					// we may still want to add files we don't want in auto collections in "favorites"
+					//include = game->getCategory90s();
+					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
+					if (years.empty())
+						include = false;
+					else
+					{
+						char y1 = years[0];
+						char y2 = years[1];
+						char y3 = years[2];
+						char y4 = years[3];
+						if(y2 == '9' && y3 == '9'){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
+					//====================================
 					break;
 				case AUTO_ARCADE:
 					include = isArcade;

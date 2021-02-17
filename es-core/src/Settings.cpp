@@ -217,7 +217,7 @@ void Settings::setDefaults()
 	
 	// Audio out device for Video playback using OMX player.
 	mStringMap["OMXAudioDev"] = "both";
-	mStringMap["CollectionSystemsAuto"] = "all,favorites"; // batocera 2players,4players,favorites,recent
+	mStringMap["CollectionSystemsAuto"] = "category_80s,all,favorites"; // batocera 2players,4players,favorites,recent
 	mStringMap["CollectionSystemsCustom"] = "";
 	mBoolMap["SortAllSystems"] = true; // batocera
 	mStringMap["SortSystems"] = "manufacturer";	

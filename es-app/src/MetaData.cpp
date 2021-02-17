@@ -56,7 +56,9 @@ void MetaDataList::initMetadata()
 		{ Publisher,        "publisher",   MD_STRING,              "",                 false,      _("Publisher"),            _("enter game publisher"),	false },
 		{ Genre,            "genre",       MD_STRING,              "",                 false,      _("Genre"),                _("enter game genre"),		false },
 
-		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Category 80s"),             _("enter Category 80s"),			false },
+		{ Category70s,         "Category70s",    MD_BOOL,                "false",            false,      _("Only 70s games"),             _("enter Category 70s"),			false },
+		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Only 80s games"),             _("enter Category 80s"),			false },
+		{ Category90s,         "Category90s",    MD_BOOL,                "false",            false,      _("Only 90s games"),             _("enter Category 90s"),			false },
 
 		{ ArcadeSystemName, "arcadesystemname",  MD_STRING,        "",                 false,      _("Arcade system"),        _("enter game arcade system"), false },
 

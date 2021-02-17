@@ -189,9 +189,19 @@ const std::string FileData::getThumbnailPath()
 	return thumbnail;
 }
 
+const bool FileData::getCategory70s()
+{
+	return getMetadata(MetaDataId::Category70s) == "true";
+}
+
 const bool FileData::getCategory80s()
 {
 	return getMetadata(MetaDataId::Category80s) == "true";
+}
+
+const bool FileData::getCategory90s()
+{
+	return getMetadata(MetaDataId::Category90s) == "true";
 }
 
 const bool FileData::getFavorite()

@@ -91,7 +91,9 @@ public:
 	virtual const bool getKidGame();
 	virtual const bool hasCheevos();
 
+	virtual const bool getCategory70s();
 	virtual const bool getCategory80s();
+	virtual const bool getCategory90s();
 
 	const std::string getConfigurationName();
 
