@@ -35,6 +35,12 @@ enum CollectionSystemType
 	CUSTOM_COLLECTION,	
 };
 
+struct CollectionByName
+{
+	std::string name;
+	CollectionSystemType system;
+};
+
 struct CollectionSystemDecl
 {
 	CollectionSystemType type; // type of system

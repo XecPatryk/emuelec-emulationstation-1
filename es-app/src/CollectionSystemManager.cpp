@@ -29,7 +29,7 @@ std::string myCollectionsName = "collections";
 CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 
 // array for assigning games by name
-std::string categoryByName[] = {
+CollectionByName categoryByName[] = {
 	{"asdasd", CUSTOM_COLLECTION},
 	{"asdasd", CUSTOM_COLLECTION}
 };
@@ -372,14 +372,14 @@ void CollectionSystemManager::refreshCollectionSystems(FileData* file)
 
 void CollectionSystemManager::updateCollectionSystem(FileData* file, CollectionSystemData sysData)
 {
-	for (int i = 0; i < categoryByName.size(); i++)
+	for (auto cat = categoryByName.cbegin(); cat != categoryByName.cend(); cat++)
 	{
 		//categoryByName
 		char trstring2[1024];
-		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), categoryByName[i][0]); // batocera
+		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), categoryByName->name); // batocera
 		mWindow->displayNotificationMessage(trstring2, 10000);
 	}
-	
+
 	if (!sysData.isPopulated)
 		return;
 
