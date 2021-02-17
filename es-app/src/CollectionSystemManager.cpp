@@ -1061,13 +1061,29 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 				case AUTO_CATEGORY_70s:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory70s();
-					
+					if (years_gameDC.empty()){
+						include = false;
+					}else{
+						if(y2 == "9" && y3 == "7"){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_80s:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory80s();
-					
+					if (years_gameDC.empty()){
+						include = false;
+					}else{
+						if(y2 == "9" && y3 == "8"){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_90s:
