@@ -1055,13 +1055,39 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 				case AUTO_CATEGORY_70s:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory70s();
-					
+					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
+					if (years.empty()){
+						include = false;
+					}else{
+						std::string  y1 = years.substr(0, 1).c_str();
+						std::string  y2 = years.substr(1, 1).c_str();
+						std::string  y3 = years.substr(2, 1).c_str();
+						std::string  y4 = years.substr(3, 1).c_str();
+						if(y2 == "9" && y3 == "7"){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_80s:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory80s();
-					
+					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
+					if (years.empty()){
+						include = false;
+					}else{
+						std::string  y1 = years.substr(0, 1).c_str();
+						std::string  y2 = years.substr(1, 1).c_str();
+						std::string  y3 = years.substr(2, 1).c_str();
+						std::string  y4 = years.substr(3, 1).c_str();
+						if(y2 == "9" && y3 == "8"){
+							include = true;
+						}else{
+							include = false;
+						}
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_90s:
@@ -1071,11 +1097,11 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					if (years.empty()){
 						include = false;
 					}else{
-						char y1 = years.substr(0, 1).c_str();
-						char y2 = years.substr(1, 1).c_str();
-						char y3 = years.substr(2, 1).c_str();
-						char y4 = years.substr(3, 1).c_str();
-						if(y2 == '9' && y3 == '9'){
+						std::string  y1 = years.substr(0, 1).c_str();
+						std::string  y2 = years.substr(1, 1).c_str();
+						std::string  y3 = years.substr(2, 1).c_str();
+						std::string  y4 = years.substr(3, 1).c_str();
+						if(y2 == "9" && y3 == "9"){
 							include = true;
 						}else{
 							include = false;
