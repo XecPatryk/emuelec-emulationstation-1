@@ -1056,10 +1056,9 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory70s();
 					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
-					if (years.empty())
+					if (years.empty()){
 						include = false;
-					else
-					{
+					}else{
 						char y1 = years[0];
 						char y2 = years[1];
 						char y3 = years[2];
@@ -1076,10 +1075,9 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory80s();
 					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
-					if (years.empty())
+					if (years.empty()){
 						include = false;
-					else
-					{
+					}else{
 						char y1 = years[0];
 						char y2 = years[1];
 						char y3 = years[2];
@@ -1096,10 +1094,9 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory90s();
 					std::string years = game->getMetadata(MetaDataId::ReleaseDate);
-					if (years.empty())
+					if (years.empty()){
 						include = false;
-					else
-					{
+					}else{
 						char y1 = years[0];
 						char y2 = years[1];
 						char y3 = years[2];
