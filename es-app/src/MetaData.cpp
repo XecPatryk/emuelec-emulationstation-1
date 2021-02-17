@@ -55,6 +55,11 @@ void MetaDataList::initMetadata()
 		{ Developer,        "developer",   MD_STRING,              "",                 false,      _("Developer"),            _("enter game developer"),	false },
 		{ Publisher,        "publisher",   MD_STRING,              "",                 false,      _("Publisher"),            _("enter game publisher"),	false },
 		{ Genre,            "genre",       MD_STRING,              "",                 false,      _("Genre"),                _("enter game genre"),		false },
+		
+		{ CategoryAction,         "CategoryAction",    MD_BOOL,                "false",            false,      _("Only Action games"),             _("enter Category Action"),			false },
+		{ CategoryPlatform,         "CategoryPlatform",    MD_BOOL,                "false",            false,      _("Only Platform games"),             _("enter Category Platform"),			false },
+		{ CategoryShooter,         "CategoryShooter",    MD_BOOL,                "false",            false,      _("Only Shooter games"),             _("enter Category Shooter"),			false },
+		{ CategoryAdventure,         "CategoryAdventure",    MD_BOOL,                "false",            false,      _("Only Adventure games"),             _("enter Category Adventure"),			false },
 
 		{ Category70s,         "Category70s",    MD_BOOL,                "false",            false,      _("Only 70s games"),             _("enter Category 70s"),			false },
 		{ Category80s,         "Category80s",    MD_BOOL,                "false",            false,      _("Only 80s games"),             _("enter Category 80s"),			false },

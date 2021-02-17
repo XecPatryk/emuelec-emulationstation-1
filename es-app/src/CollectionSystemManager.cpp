@@ -35,6 +35,11 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 		{ AUTO_CATEGORY_70s,       "category_70s",    _("category_70s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_70s",          false,       true },
 		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
 		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
+
+		{ AUTO_CATEGORY_ACTION,       "category_action",    _("category_action"),         FileSorts::FILENAME_ASCENDING,    "auto-category_action",          false,       true },
+		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("category_platform"),         FileSorts::FILENAME_ASCENDING,    "auto-category_platform",          false,       true },
+		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("category_shooter"),         FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",          false,       true },
+		{ AUTO_CATEGORY_ADVENTURE,       "category_adventure",    _("category_adventure"),         FileSorts::FILENAME_ASCENDING,    "auto-category_adventure",          false,       true },
 		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
@@ -767,6 +772,54 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file, const std::
 			}
 		}
 
+		//CategoryAction
+		if (editingCollection == "CategoryAction"){
+			value = md->get(MetaDataId::CategoryAction);
+			if (value != "true")
+				md->set(MetaDataId::CategoryAction, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryAction, "false");
+			}
+		}
+
+		//CategoryPlatform
+		if (editingCollection == "CategoryPlatform"){
+			value = md->get(MetaDataId::CategoryPlatform);
+			if (value != "true")
+				md->set(MetaDataId::CategoryPlatform, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryPlatform, "false");
+			}
+		}
+
+		//CategoryShooter
+		if (editingCollection == "CategoryShooter"){
+			value = md->get(MetaDataId::CategoryShooter);
+			if (value != "true")
+				md->set(MetaDataId::CategoryShooter, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryShooter, "false");
+			}
+		}
+
+		//CategoryAdventure
+		if (editingCollection == "CategoryAdventure"){
+			value = md->get(MetaDataId::CategoryAdventure);
+			if (value != "true")
+				md->set(MetaDataId::CategoryAdventure, "true");
+			else
+			{
+				adding = false;
+				md->set(MetaDataId::CategoryAdventure, "false");
+			}
+		}
+
 		sysData->addToIndex(file);
 		saveToGamelistRecovery(file);
 
@@ -1098,6 +1151,18 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 							include = false;
 						}
 					}
+					//====================================
+					break;
+				case AUTO_CATEGORY_ACTION:
+					//====================================
+					break;
+				case AUTO_CATEGORY_PLATFORM:
+					//====================================
+					break;
+				case AUTO_CATEGORY_SHOOTER:
+					//====================================
+					break;
+				case AUTO_CATEGORY_ADVENTURE:
 					//====================================
 					break;
 				case AUTO_ARCADE:

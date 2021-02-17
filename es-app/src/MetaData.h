@@ -70,7 +70,11 @@ enum MetaDataId
 	ScraperId = 36,
 	Category80s = 37,
 	Category70s = 38,
-	Category90s = 39
+	Category90s = 39,
+	CategoryAction = 40,
+	CategoryPlatform = 41,
+	CategoryShooter = 42,
+	CategoryAdventure = 43
 };
 
 namespace MetaDataImportType

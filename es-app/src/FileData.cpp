@@ -189,6 +189,26 @@ const std::string FileData::getThumbnailPath()
 	return thumbnail;
 }
 
+const bool FileData::getCategoryAction()
+{
+	return getMetadata(MetaDataId::CategoryAction) == "true";
+}
+
+const bool FileData::getCategoryPlatform()
+{
+	return getMetadata(MetaDataId::CategoryPlatform) == "true";
+}
+
+const bool FileData::getCategoryShooter()
+{
+	return getMetadata(MetaDataId::CategoryShooter) == "true";
+}
+
+const bool FileData::getCategoryAdventure()
+{
+	return getMetadata(MetaDataId::CategoryAdventure) == "true";
+}
+
 const bool FileData::getCategory70s()
 {
 	return getMetadata(MetaDataId::Category70s) == "true";
