@@ -28,6 +28,12 @@ std::string myCollectionsName = "collections";
  * a CollectionSystemManager Instance */
 CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 
+// array for assigning games by name
+std::string categoryByName[] = {
+	{"asdasd", CUSTOM_COLLECTION},
+	{"asdasd", CUSTOM_COLLECTION}
+};
+
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
@@ -79,6 +85,7 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 
 CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(window)
 {
+	
 	// create a map
 	std::vector<CollectionSystemDecl> tempSystemDecl = getSystemDecls();
 
