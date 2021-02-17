@@ -1083,6 +1083,7 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 			}
 
 			std::string years_gameDC = game->getMetadata(MetaDataId::ReleaseDate);
+			std::string genre_gameDC = game->getMetadata(MetaDataId::Genre);
 			std::string  y1 = years_gameDC.substr(0, 1).c_str();
 			std::string  y2 = years_gameDC.substr(1, 1).c_str();
 			std::string  y3 = years_gameDC.substr(2, 1).c_str();
@@ -1154,15 +1155,35 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					//====================================
 					break;
 				case AUTO_CATEGORY_ACTION:
+					if (genre_gameDC.find("Action") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_PLATFORM:
+					if (genre_gameDC.find("Platform") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_SHOOTER:
+					if (genre_gameDC.find("Shooter") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
 					//====================================
 					break;
 				case AUTO_CATEGORY_ADVENTURE:
+					if (genre_gameDC.find("Adventure") != std::string::npos) {
+						include = true;
+					}else{
+						include = false;
+					}
 					//====================================
 					break;
 				case AUTO_ARCADE:
