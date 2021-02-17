@@ -1029,6 +1029,12 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					continue;
 			}
 
+			std::string years_gameDC = game->getMetadata(MetaDataId::ReleaseDate);
+			std::string  y1 = years_gameDC.substr(0, 1).c_str();
+			std::string  y2 = years_gameDC.substr(1, 1).c_str();
+			std::string  y3 = years_gameDC.substr(2, 1).c_str();
+			std::string  y4 = years_gameDC.substr(3, 1).c_str();
+
 			switch(sysDecl.type) 
 			{
 				case AUTO_ALL_GAMES:
@@ -1067,14 +1073,9 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 				case AUTO_CATEGORY_90s:
 					// we may still want to add files we don't want in auto collections in "favorites"
 					//include = game->getCategory90s();
-					std::string years_gameDC = game->getMetadata(MetaDataId::ReleaseDate);
 					if (years_gameDC.empty()){
 						include = false;
 					}else{
-						std::string  y1 = years_gameDC.substr(0, 1).c_str();
-						std::string  y2 = years_gameDC.substr(1, 1).c_str();
-						std::string  y3 = years_gameDC.substr(2, 1).c_str();
-						std::string  y4 = years_gameDC.substr(3, 1).c_str();
 						if(y2 == "9" && y3 == "9"){
 							include = true;
 						}else{
