@@ -34,6 +34,8 @@ CollectionByName categoryByName[] = {
 	{"asdasd", CUSTOM_COLLECTION}
 };
 
+auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
+
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
@@ -372,11 +374,11 @@ void CollectionSystemManager::refreshCollectionSystems(FileData* file)
 
 void CollectionSystemManager::updateCollectionSystem(FileData* file, CollectionSystemData sysData)
 {
-	for (auto cat = categoryByName.cbegin(); cat != categoryByName.cend(); cat++)
+	for (auto cat = categoryByNameVector.cbegin(); cat != categoryByNameVector.cend(); cat++)
 	{
 		//categoryByName
 		char trstring2[1024];
-		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), categoryByName->name); // batocera
+		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), (*cat)->name); // batocera
 		mWindow->displayNotificationMessage(trstring2, 10000);
 	}
 
