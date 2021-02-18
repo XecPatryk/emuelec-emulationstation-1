@@ -378,7 +378,7 @@ void CollectionSystemManager::updateCollectionSystem(FileData* file, CollectionS
 	{
 		//categoryByName
 		char trstring2[1024];
-		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), (*cat)->name); // batocera
+		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), (*cat).name); // batocera
 		mWindow->displayNotificationMessage(trstring2, 10000);
 	}
 
