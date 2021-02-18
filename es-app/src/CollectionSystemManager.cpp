@@ -30,10 +30,9 @@ CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 
 // array for assigning games by name
 CollectionByName categoryByName[] = {
-	{"asdasd", CUSTOM_COLLECTION},
-	{"asdasd", CUSTOM_COLLECTION}
+	{"Darkwing Duck 2", AUTO_CATEGORY_SHOOTER},
+	{"Paperboy 2", AUTO_CATEGORY_SHOOTER}
 };
-
 auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
 
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
@@ -374,14 +373,6 @@ void CollectionSystemManager::refreshCollectionSystems(FileData* file)
 
 void CollectionSystemManager::updateCollectionSystem(FileData* file, CollectionSystemData sysData)
 {
-	for (auto cat = categoryByNameVector.cbegin(); cat != categoryByNameVector.cend(); cat++)
-	{
-		//categoryByName
-		char trstring2[1024];
-		snprintf(trstring2, 1024, _("Item '%s' :)").c_str(), (*cat).name); // batocera
-		mWindow->displayNotificationMessage(trstring2, 10000);
-	}
-
 	if (!sysData.isPopulated)
 		return;
 
@@ -1099,6 +1090,7 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 					continue;
 			}
 
+			std::string name_gameDC = game->getMetadata(MetaDataId::Name);
 			std::string years_gameDC = game->getMetadata(MetaDataId::ReleaseDate);
 			std::string genre_gameDC = game->getMetadata(MetaDataId::Genre);
 			std::string  y1 = years_gameDC.substr(0, 1).c_str();
@@ -1192,6 +1184,15 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 						include = true;
 					}else{
 						include = false;
+					}
+					//by name
+					if(include == false){
+						for(auto it = categoryByNameVector.cbegin(); it != categoryByNameVector.cend(); it++)
+						{
+							if (name_gameDC.find((*it).name) != std::string::npos && (*it).system == AUTO_CATEGORY_SHOOTER) {
+								include = true;
+							}
+						}
 					}
 					//====================================
 					break;
