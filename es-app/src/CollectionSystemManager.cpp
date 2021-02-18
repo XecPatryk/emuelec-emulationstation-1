@@ -31,7 +31,8 @@ CollectionSystemManager* CollectionSystemManager::sInstance = NULL;
 // array for assigning games by name
 CollectionByName categoryByName[] = {
 	{"Darkwing Duck 2", AUTO_CATEGORY_SHOOTER},
-	{"Paperboy 2", AUTO_CATEGORY_SHOOTER}
+	{"Paperboy 2", AUTO_CATEGORY_SHOOTER},
+	{"DuckTales 2", AUTO_CATEGORY_SHOOTER}
 };
 auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
 
