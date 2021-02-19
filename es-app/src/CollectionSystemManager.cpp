@@ -1100,10 +1100,10 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 			std::string  y4 = years_gameDC.substr(3, 1).c_str();
 			std::string system_gameDC = game->getSystemName();
 
-			char trstring2[1024];
+			/*char trstring2[1024];
 
 		snprintf(trstring2, 1024, _("System name '%s' :)").c_str(), system_gameDC.c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, 10000);
+		mWindow->displayNotificationMessage(trstring2, 10000);*/
 
 			switch(sysDecl.type) 
 			{
