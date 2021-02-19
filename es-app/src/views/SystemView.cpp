@@ -26,7 +26,7 @@
 const int logoBuffersLeft[] = { -5, -2, -1 };
 const int logoBuffersRight[] = { 1, 2, 5 };
 
-bool category_view = false;
+bool category_view = true;
 
 SystemView::SystemView(Window* window) : IList<SystemViewData, SystemData*>(window, LIST_SCROLL_STYLE_SLOW, LIST_ALWAYS_LOOP),
 										 mViewNeedsReload(true),
@@ -991,10 +991,15 @@ std::vector<HelpPrompt> SystemView::getHelpPrompts()
 
 	prompts.push_back(HelpPrompt(BUTTON_OK, _("SELECT")));
 
-	if (SystemData::isNetplayActivated() && SystemConf::getInstance()->getBool("global.netplay"))
+	/*if (SystemData::isNetplayActivated() && SystemConf::getInstance()->getBool("global.netplay"))
 		prompts.push_back(HelpPrompt("x", _("NETPLAY")));
 	else
-		prompts.push_back(HelpPrompt("x", _("RANDOM")));
+		prompts.push_back(HelpPrompt("x", _("RANDOM")));*/
+	if(category_view == true){
+		prompts.push_back(HelpPrompt("x", _("EMULATORS")));
+	}else{
+		prompts.push_back(HelpPrompt("x", _("CATEGORIES")));
+	}
 
 	if (SystemData::getSystem("all") != nullptr)
 		prompts.push_back(HelpPrompt("y", _("QUICK SEARCH")));

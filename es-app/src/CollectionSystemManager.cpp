@@ -40,14 +40,14 @@ std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
 {
 	CollectionSystemDecl systemDecls[] = {
 		//custom categories
-		{ AUTO_CATEGORY_70s,       "category_70s",    _("category_70s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_70s",          false,       true },
-		{ AUTO_CATEGORY_80s,       "category_80s",    _("category_80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
-		{ AUTO_CATEGORY_90s,       "category_90s",    _("category_90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
+		{ AUTO_CATEGORY_70s,       "category_70s",    _("Games from 70s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_70s",          false,       true },
+		{ AUTO_CATEGORY_80s,       "category_80s",    _("Games from 80s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_80s",          false,       true },
+		{ AUTO_CATEGORY_90s,       "category_90s",    _("Games from 90s"),         FileSorts::FILENAME_ASCENDING,    "auto-category_90s",          false,       true },
 
-		{ AUTO_CATEGORY_ACTION,       "category_action",    _("category_action"),         FileSorts::FILENAME_ASCENDING,    "auto-category_action",          false,       true },
-		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("category_platform"),         FileSorts::FILENAME_ASCENDING,    "auto-category_platform",          false,       true },
-		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("category_shooter"),         FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",          false,       true },
-		{ AUTO_CATEGORY_ADVENTURE,       "category_adventure",    _("category_adventure"),         FileSorts::FILENAME_ASCENDING,    "auto-category_adventure",          false,       true },
+		{ AUTO_CATEGORY_ACTION,       "category_action",    _("Action games"),         FileSorts::FILENAME_ASCENDING,    "auto-category_action",          false,       true },
+		{ AUTO_CATEGORY_PLATFORM,       "category_platform",    _("Platform games"),         FileSorts::FILENAME_ASCENDING,    "auto-category_platform",          false,       true },
+		{ AUTO_CATEGORY_SHOOTER,       "category_shooter",    _("Shooter games"),         FileSorts::FILENAME_ASCENDING,    "auto-category_shooter",          false,       true },
+		{ AUTO_CATEGORY_ADVENTURE,       "category_adventure",    _("Adventure games"),         FileSorts::FILENAME_ASCENDING,    "auto-category_adventure",          false,       true },
 		
 		//type                name            long name                 default sort					  theme folder               isCustom     displayIfEmpty
 		{ AUTO_ALL_GAMES,       "all",          _("all games"),         FileSorts::FILENAME_ASCENDING,    "auto-allgames",           false,       true },
@@ -1098,6 +1098,12 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 			std::string  y2 = years_gameDC.substr(1, 1).c_str();
 			std::string  y3 = years_gameDC.substr(2, 1).c_str();
 			std::string  y4 = years_gameDC.substr(3, 1).c_str();
+			std::string system_gameDC = game->getSystemName();
+
+			char trstring2[1024];
+
+		snprintf(trstring2, 1024, _("System name '%s' :)").c_str(), system_gameDC.c_str()); // batocera
+		mWindow->displayNotificationMessage(trstring2, 10000);
 
 			switch(sysDecl.type) 
 			{
