@@ -294,6 +294,8 @@ void SystemView::populate()
 			mWindow->pushGui(new GuiMsgBox(mWindow, _("ERROR: EVERY SYSTEM IS HIDDEN, RE-DISPLAYING ALL OF THEM NOW"), _("OK"), nullptr));
 		}
 	}
+	
+	updateExtraTextBinding();
 }
 
 void SystemView::goToSystem(SystemData* system, bool animate)
@@ -547,8 +549,6 @@ bool SystemView::input(InputConfig* config, Input input)
 
 			auto zz2 = SystemData::sSystemVector.cbegin();
 			setCursor((*zz2));
-
-			updateExtraTextBinding();
 
 			return true;
 		}
