@@ -34,6 +34,10 @@ CollectionByName categoryByName[] = {
 	{"Paperboy 2", AUTO_CATEGORY_SHOOTER},
 	{"DuckTales 2", AUTO_CATEGORY_SHOOTER}
 };
+
+//array of system to be sorted by age
+std::string systemForCategorySort[] = {"nes", "c64"};
+
 auto categoryByNameVector = std::vector<CollectionByName>(categoryByName, categoryByName + sizeof(categoryByName) / sizeof(categoryByName[0]));
 
 std::vector<CollectionSystemDecl> CollectionSystemManager::getSystemDecls()
@@ -1100,10 +1104,6 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 			std::string  y4 = years_gameDC.substr(3, 1).c_str();
 			std::string system_gameDC = game->getSystemName();
 
-			char trstring2[1024];
-		snprintf(trstring2, 1024, _("System name '%s' :)").c_str(), system_gameDC.c_str()); // batocera
-		mWindow->displayNotificationMessage(trstring2, 10000);
-
 			switch(sysDecl.type) 
 			{
 				case AUTO_ALL_GAMES:
@@ -1134,7 +1134,12 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 						include = false;
 					}else{
 						if(y2 == "9" && y3 == "7"){
-							include = true;
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
 						}else{
 							include = false;
 						}
@@ -1148,7 +1153,12 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 						include = false;
 					}else{
 						if(y2 == "9" && y3 == "8"){
-							include = true;
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
 						}else{
 							include = false;
 						}
@@ -1162,7 +1172,12 @@ void CollectionSystemManager::populateAutoCollection(CollectionSystemData* sysDa
 						include = false;
 					}else{
 						if(y2 == "9" && y3 == "9"){
-							include = true;
+							include = false;
+							for(std::string systemSingle : systemForCategorySort){
+								if(systemSingle == system_gameDC){
+									include = true;
+								}
+							}
 						}else{
 							include = false;
 						}
