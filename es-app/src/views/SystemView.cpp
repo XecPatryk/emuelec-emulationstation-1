@@ -548,6 +548,8 @@ bool SystemView::input(InputConfig* config, Input input)
 			auto zz2 = SystemData::sSystemVector.cbegin();
 			setCursor((*zz2));
 
+			updateExtraTextBinding();
+
 			return true;
 		}
 
